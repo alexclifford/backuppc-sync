@@ -63,7 +63,7 @@ rm -f $LOCK_FILE 2>&1 | $TEE_BIN -a $LOG_PATH
 echo "" 2>&1 | $TEE_BIN -a $LOG_PATH
 
 # Add SUCCESS or FAILURE to the email subject
-if [ $RSYNC_RETURN_CODE1 ] || [ $RSYNC_RETURN_CODE2 ]
+if [ $RSYNC_RETURN_CODE1 -ne 0 ] || [ $RSYNC_RETURN_CODE2 -ne 0 ]
 then
 	EMAIL_SUBJECT="FAILURE! - "$EMAIL_SUBJECT
 else
